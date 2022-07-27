@@ -5,13 +5,13 @@ export default function Textform(props) {
     setText(event.target.value);
   };
   const handleUpClick = () => {
-    console.log("Changed " + text + " toUppercase");
+    //console.log("Changed " + text + " toUppercase");
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Successively Converted to Uppercase", "success");
   };
   const handleLoClick = () => {
-    console.log("Changed " + text + " toLowercase");
+    //console.log("Changed " + text + " toLowercase");
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Successively Converted to Lowercase", "success");
@@ -24,9 +24,7 @@ export default function Textform(props) {
   const [text, setText] = useState("");
 
   const handleCopy = () => {
-    var text = document.getElementById("mybox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     props.showAlert("Copied to Clipboard", "success");
   };
 
@@ -117,7 +115,7 @@ export default function Textform(props) {
         <h4 className="header">Your Text Summary:</h4>
         <p className="header">
           {
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length
           }{" "}
