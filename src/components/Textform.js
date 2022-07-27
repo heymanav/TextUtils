@@ -58,8 +58,8 @@ export default function Textform(props) {
               : "black",
         }}
       >
+        <h3 className="header mb-4">{props.heading}</h3>
         <div className="mb-3">
-          <h3 className="header">{props.heading}</h3>
           <textarea
             className="form-control"
             onChange={handleOnChange}
@@ -69,29 +69,33 @@ export default function Textform(props) {
             rows={15}
           ></textarea>
         </div>
-        <button
-          className="btn btn-primary mx-2"
+        <button 
+          disabled ={text.length===0}
+          className="btn btn-primary mx-2 my-2"
           style={frmStyle}
           onClick={handleUpClick}
         >
           Convert to Uppercase
         </button>
         <button
-          className="btn btn-primary mx-2"
+          disabled ={text.length===0}
+          className="btn btn-primary mx-2 my-2"
           style={frmStyle}
           onClick={handleLoClick}
         >
           Convert to LowerCase
         </button>
         <button
-          className="btn btn-primary mx-2"
+          disabled ={text.length===0}
+          className="btn btn-primary mx-2 my-2"
           style={frmStyle}
           onClick={handleCleClick}
         >
           Clear
         </button>
         <button
-          className="btn btn-primary mx-2"
+          disabled ={text.length===0}
+          className="btn btn-primary mx-2 my-2"
           style={frmStyle}
           onClick={handleCopy}
         >
@@ -113,19 +117,22 @@ export default function Textform(props) {
         <h4 className="header">Your Text Summary:</h4>
         <p className="header">
           {
-            text
-              .trim()
-              .split(" ")
-              .filter(function(element) {
-                return element !== "";
-              }).length
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
           }{" "}
           words and {text.length} characters{" "}
         </p>
-        <p className="header">{0.008 * text.split(" ").length} Minutes Read!</p>
+        <p className="header">
+          {0.008 *
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
+          Minutes Read!
+        </p>
         <h4 className="header">Preview</h4>
         <p className="header">
-          {text.length > 0 ? text : "Enter something above to Preview it"}
+          {text.length > 0 ? text : "Nothing to Preview!"}
         </p>
       </div>
     </>

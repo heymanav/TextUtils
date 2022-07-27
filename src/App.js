@@ -24,12 +24,12 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = "	#3b444b";
       showAlert("Dark Mode Enabled", "success");
-      document.title = "TextUtils - Dark Mode";
+      // document.title = "TextUtils - Dark Mode";
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light Mode Enabled", "success");
-      document.title = "TextUtils - Light Mode";
+      // document.title = "TextUtils - Light Mode";
     }
   };
 
@@ -39,13 +39,13 @@ function App() {
       document.body.style.backgroundColor = "	#ffbaba";
       document.body.style.color = "white";
       showAlert("Red mode has been enabled", "success");
-      document.title = "TextUtils - Red Mode";
+      // document.title = "TextUtils - Red Mode";
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
       showAlert("Light mode has been enabled", "success");
-      document.title = "TextUtils - Light Mode";
+      // document.title = "TextUtils - Light Mode";
     }
   };
 
@@ -66,7 +66,7 @@ function App() {
           <Route path="/">
             <Textform
               showAlert={showAlert}
-              heading="Enter Text below to Analyze"
+              heading="Try TextUtils - Word & Character Counter with Case Convertion"
               mode={mode}
             />
           </Route>
